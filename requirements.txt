@@ -1,7 +1,7 @@
 streamlit
 pandas
-requests
 python-dotenv
+requests
 beautifulsoup4
 PyMuPDF
 openai
