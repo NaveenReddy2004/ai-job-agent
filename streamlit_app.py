@@ -8,7 +8,7 @@ st.set_page_config(page_title="AI Job Agent", layout="centered")
 
 st.title("📄 Resume Uploader + 🧠 Job Application Tracker")
 
-# ----- RESUME UPLOADER -----
+# RESUME UPLOADER
 st.subheader("📤 Upload Resume (PDF)")
 uploaded_file = st.file_uploader("Choose a PDF resume", type="pdf")
 if uploaded_file:
@@ -25,7 +25,7 @@ if uploaded_file:
         st.write(resume_text)
 
 
-# ----- JOB TRACKER -----
+# JOB TRACKER 
 st.subheader("📊 Applied Jobs Log")
 if os.path.exists("applied_jobs.csv"):
     df = pd.read_csv("applied_jobs.csv", names=["Job Title", "Company", "Job Link", "Cover Letter", "timestamp", "status"], skiprows=1)
