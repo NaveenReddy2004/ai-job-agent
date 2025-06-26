@@ -1,20 +1,28 @@
+import os
 import requests
-from bs4 import BeautifulSoup
 
 def scrape_jobs(query, num_results=5):
-    headers = {"User-Agent": "Mozilla/5.0"}
-    params = {"q": query, "hl": "en"}
-    response = requests.get("https://www.google.com/search", params=params, headers=headers)
-    soup = BeautifulSoup(response.text, "html.parser")
-    results = []
+    api_key = os.getenv("SERPAPI_KEY")
+    if not api_key:
+        print("❌ SERPAPI_KEY not found in environment.")
+        return []
 
-    for g_card in soup.select(".tF2Cxc")[:num_results]:
-        title = g_card.select_one("h3").text
-        link = g_card.select_one("a")["href"]
-        source = g_card.select_one(".VuuXrf").text if g_card.select_one(".VuuXrf") else "Unknown"
-        results.append({
-            "Job Title": title,
-            "Company": source,
-            "Job Link": link
+    params = {
+        "engine": "google_jobs",
+        "q": query,
+        "api_key": api_key,
+    }
+
+    response = requests.get("https://serpapi.com/search", params=params)
+    data = response.json()
+    results = data.get("jobs_results", [])
+
+    jobs = []
+    for result in results[:num_results]:
+        jobs.append({
+            "Job Title": result.get("title"),
+            "Company": result.get("company_name"),
+            "Job Link": result.get("related_links", [{}])[0].get("link", "#"),
         })
-    return results
+
+    return jobs
