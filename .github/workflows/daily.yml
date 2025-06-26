@@ -28,6 +28,7 @@ jobs:
           echo "GMAIL_USER=${{ secrets.GMAIL_USER }}" >> .env
           echo "GMAIL_PASS=${{ secrets.GMAIL_PASS }}" >> .env
           echo "SERPAPI_KEY=${{ secrets.SERPAPI_KEY }}" >> .env
+          echo "GEMINI_KEY=${{ secrets.GEMINI_KEY }}" >> .env   # ✅ Add this line
 
       - name: 🚀 Run Daily Job Agent
         run: python main.py
