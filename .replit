@@ -1,2 +1,0 @@
-run = "streamlit run streamlit_app.py"
-language = "python3"
