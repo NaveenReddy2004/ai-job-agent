@@ -31,4 +31,4 @@ jobs:
           echo "GEMINI_KEY=${{ secrets.GEMINI_KEY }}" >> .env   
 
       - name: 🚀 Run Daily Job Agent
-        run: python main.py
+        run: python ai-job-agent/main.py
