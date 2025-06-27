@@ -29,8 +29,10 @@ jobs:
           echo "GMAIL_PASS=${{ secrets.GMAIL_PASS }}" >> .env
           echo "SERPAPI_KEY=${{ secrets.SERPAPI_KEY }}" >> .env
           echo "GEMINI_KEY=${{ secrets.GEMINI_KEY }}" >> .env   
+          
+      - name: Download test PDF
+        run: wget -O resume.pdf https://github.com/NaveenReddy2004/ai-job-agent/blob/main/ai-job-agent/resumes/resume%20(2).pdf
 
       - name: 🚀 Run Daily Job Agent
         run: python ai-job-agent/main.py
-      - name: Download test PDF
-        run: wget -O resume.pdf https://github.com/NaveenReddy2004/ai-job-agent/blob/main/ai-job-agent/resumes/resume%20(2).pdf
+      
