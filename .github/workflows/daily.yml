@@ -33,4 +33,4 @@ jobs:
       - name: 🚀 Run Daily Job Agent
         run: python ai-job-agent/main.py
       - name: Download test PDF
-        run: wget -O resume.pdf 
+        run: wget -O resume.pdf https://github.com/NaveenReddy2004/ai-job-agent/blob/main/ai-job-agent/resumes/resume%20(2).pdf
