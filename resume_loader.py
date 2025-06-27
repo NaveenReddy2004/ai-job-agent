@@ -1,7 +1,7 @@
 import os
 import fitz
 
-def load_resume_text(file_path="resumes/Naveen_Resume.pdf"):
+def load_resume_text(file_path="resumes/resume(2).pdf"):
     if not os.path.exists(file_path):
         raise FileNotFoundError(f"Resume file not found at: {file_path}")
 
