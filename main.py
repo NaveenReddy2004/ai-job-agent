@@ -18,3 +18,11 @@ applied_df["status"] = "Applied"
 applied_df.to_csv("applied_jobs.csv", mode='a', header=False, index=False)
 
 send_applied_email(jobs)
+
+if __name__ == "__main__":
+    try:
+        resume_text = load_resume_text() 
+        print("Resume Loaded Successfully!\n")
+        print(resume_text[:1000])  
+    except FileNotFoundError as e:
+        print(f"{e}")
